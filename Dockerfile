@@ -5,18 +5,19 @@ FROM python:3.12.6-slim
 WORKDIR /app
 
 # Install system dependencies (PostgreSQL and others)
+
+# Copy the entire backend application
+COPY . .
+
 RUN apt-get update && apt-get install -y \
     libpq-dev gcc curl \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Copy the requirements file first to leverage Docker caching
-COPY requirements.txt . 
+  /  Copy the requirements file first to leverage Docker caching
+# COPY requirements.txt . 
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy the entire backend application
-COPY . .
 
 # Expose the port that Django app will run on
 EXPOSE 8000
