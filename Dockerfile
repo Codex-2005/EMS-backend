@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y \
     libpq-dev gcc curl \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-  /  Copy the requirements file first to leverage Docker caching
+#   /  Copy the requirements file first to leverage Docker caching
 # COPY requirements.txt . 
 
 # Install Python dependencies
