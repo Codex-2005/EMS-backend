@@ -1,6 +1,22 @@
 version: '3.8'
 
 services:
+  
+
+  db:
+    image: postgres:17
+    container_name: db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "Technman%4010"
+      POSTGRES_DB: EMS
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      retries: 5
+
   backend:
     build: .
       # context: .
@@ -12,25 +28,11 @@ services:
     environment:
       - DEBUG=1
     depends_on:
-      - postgres
+      - db
     ports:
       - "8000:8000"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/"]
-      interval: 10s
-      retries: 5
-
-  db:
-    image: postgres:17
-    container_name: postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: "Technman%4010"
-      POSTGRES_DB: EMS
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
       retries: 5
 
