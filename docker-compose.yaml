@@ -12,7 +12,7 @@ services:
     environment:
       - DEBUG=1
     depends_on:
-      - db
+      - postgres
     ports:
       - "8000:8000"
     healthcheck:
