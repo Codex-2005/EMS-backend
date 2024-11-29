@@ -3,7 +3,7 @@ version: '3.8'
 services:
   backend:
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile
     container_name: backend
     # image: shivam1035/ems_project-backend:latest
