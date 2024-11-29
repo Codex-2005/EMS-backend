@@ -2,11 +2,8 @@ version: '3.8'
 
 services:
   backend:
-    build:
-      context: ./
-      dockerfile: Dockerfile
+    image: django-app_backend  
     container_name: backend
-    # image: shivam1035/ems_project-backend:latest
     volumes:
       - ./:/app
     environment:
