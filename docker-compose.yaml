@@ -5,7 +5,7 @@ services:
     image: django-app_backend  
     container_name: backend
     volumes:
-      - ./:/app
+      - ./backend:/app
     environment:
       - DEBUG=1
     depends_on:
