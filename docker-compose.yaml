@@ -8,7 +8,7 @@ services:
     container_name: backend
     # image: shivam1035/ems_project-backend:latest
     volumes:
-      - ./:/app
+      - ./backend:/app
     environment:
       - DEBUG=1
     depends_on:
